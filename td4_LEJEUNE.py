@@ -5,15 +5,18 @@ Created on Thu Mar 12 15:48:18 2020
 @author: sebas
 """
 import random
-chessdim=8
+chessdim=8 #default chess dimension for the problem 
+
 
 def changeChessDim(dim):
+    ''' Change the dimension of the plate '''
     assert dim in range(25), 'The dimension should between 1 and 25'
     global chessdim
     chessdim = dim
 
 class individual :
     def __init__(self,val=None):
+        ''' constructor for individual class'''
         if val==None:
             self.val=random.sample(range(chessdim), chessdim)
         else:
@@ -27,6 +30,7 @@ class individual :
         return p1[0]==p2[0] or p1[1]==p2[1] or abs(p1[0]-p2[0])==abs(p1[1]-p2[1])
     
     def fitness(self):
+        ''' fitness method to get the weight '''
         self.conflictCmpt=0
         for i in range(chessdim):
             for j in range(i+1,chessdim):
@@ -103,7 +107,9 @@ def AllSolutions():
             pop = selected[:] + crossed[:] + mutated[:] + newalea[:]
 
 if __name__ == '__main__':
-    changeChessDim(eval(input("Give the chess dimension (must be between 1 and 25) : ")))
+    dim = input("Give the chess dimension (must be between 1 and 25) | PRESS ENTER FOR 8 queens problem ")
+    dim = dim if len(dim)>0 else str(chessdim) #converting global variable to string for applying eval() method
+    changeChessDim(eval(dim))
     AllSolutions()
     
     

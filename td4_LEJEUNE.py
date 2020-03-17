@@ -49,7 +49,7 @@ def selection(pop, hcount, lcount):
     return pop[:hcount]+pop[len(pop)-lcount:]
 
 def crossover(ind1, ind2):
-    midupper = chessdim//2 if chessdim%2==0 else (chessdim//2)+1
+    midupper = chessdim//2 if chessdim%2==0 else (chessdim//2)+1 #get the middle of the chess dimension if it is a even and odd dimension size
     if isinstance(ind1, individual) and isinstance(ind2, individual):
         ind1.val = ind1.val[:midupper]+ind2.val[chessdim//2:]
         ind2.val = ind2.val[:midupper]+ind1.val[chessdim//2:]
@@ -58,7 +58,7 @@ def crossover(ind1, ind2):
 def mutation(ind):
     l=ind.val[:]
     l[random.randint(0,chessdim-1)]=random.randint(0,chessdim-1)
-    return individual(l)
+    return individual(l) #recreate object in the return
 
 def OneUniqueSolution(): 
     pop = initializationIndividuals(25)
@@ -83,7 +83,7 @@ def OneUniqueSolution():
     print(evaluatedPop[0])
 
 def AllSolutions(): 
-    allsolutions = []
+    allsolutions = [] #tab that contains all solutions
     evaluatedPop = []
     pop = initializationIndividuals(25)
     while True:
@@ -110,7 +110,7 @@ if __name__ == '__main__':
     dim = input("Give the chess dimension (must be between 1 and 25) | PRESS ENTER FOR 8 queens problem ")
     dim = dim if len(dim)>0 else str(chessdim) #converting global variable to string for applying eval() method
     changeChessDim(eval(dim))
-    AllSolutions()
+    AllSolutions() #display all solutions (infinite loop)
     
     
     

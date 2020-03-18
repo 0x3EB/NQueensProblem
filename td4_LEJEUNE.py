@@ -135,7 +135,7 @@ def AllSolutions():
         evaluatedPop = evaluate(pop) #sort the list
         if len(evaluatedPop)>0:
             if evaluatedPop[0].fitness() == 0:
-                if(evaluatedPop[0].val not in [idv.val for idv in allsolutions]):
+                if(evaluatedPop[0].val not in [idv.val for idv in allsolutions]): #if the solution is not in the list of that avoid duplicate solutions
                     allsolutions.append(evaluatedPop[0]) #add the solution to the AllSolution list
                 else:
                     evaluatedPop.pop(0) #remove the solution from the population list

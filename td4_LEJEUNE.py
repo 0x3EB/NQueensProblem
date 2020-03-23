@@ -3,7 +3,16 @@
 Created on Thu Mar 12 15:48:18 2020
 
 @author: sebastien lejeune Apprenti-A3 (IBO)
+(J'ai décidé de faire pour N dimension du plateau d'echec et non seulement 8, cela permet de resoudre le probleme des dames de façon generique)
+
+Project :
+    
+    Solving N Queens problem
+    N is the dimnesion of the chess
+    
+
 """
+
 import random
 chessdim=8 #default chess dimension
 
